@@ -1,22 +1,35 @@
 {
-  "name": "app-mobile",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "app-mobile-strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
   "scripts": {
-    "start": "expo start",
-    "dev": "expo start --tunnel",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
   },
+  "devDependencies": {},
   "dependencies": {
-    "expo": "~49.0.15",
-    "expo-status-bar": "~1.6.0",
-    "react": "18.2.0",
-    "react-native": "0.72.6"
+    "@strapi/strapi": "4.20.1",
+    "@strapi/plugin-users-permissions": "4.20.1",
+    "@strapi/plugin-i18n": "4.20.1",
+    "@strapi/plugin-cloud": "4.20.1",
+    "better-sqlite3": "8.6.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
   },
-  "devDependencies": {
-    "@babel/core": "^7.20.0"
+  "author": {
+    "name": "A Strapi developer"
   },
-  "private": true
+  "strapi": {
+    "uuid": "ead23c52-1ab9-4854-b866-d6ba8d2c97a7"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
 }

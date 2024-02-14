@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "task_tags",
+  "info": {
+    "singularName": "task-tag",
+    "pluralName": "task-tags",
+    "displayName": "taskTag",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_task": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::task.task"
+    },
+    "id_tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
+    }
+  }
+}
