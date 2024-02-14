@@ -24,11 +24,11 @@
       "type": "integer",
       "default": 1
     },
-    "task": {
+    "tasks": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::task.task",
-      "inversedBy": "id_priority"
+      "mappedBy": "priority"
     }
   }
 }

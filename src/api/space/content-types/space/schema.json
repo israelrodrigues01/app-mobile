@@ -12,10 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "id_user": {
+    "users_permissions_user": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "spaces"
     },
     "name": {
       "type": "string",
@@ -33,11 +34,11 @@
       "type": "integer",
       "default": 1
     },
-    "task": {
+    "tasks": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::task.task",
-      "inversedBy": "id_space"
+      "mappedBy": "space"
     }
   }
 }

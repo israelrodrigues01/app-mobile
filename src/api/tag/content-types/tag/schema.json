@@ -22,6 +22,12 @@
     "situation": {
       "type": "integer",
       "default": 1
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::task.task",
+      "inversedBy": "tags"
     }
   }
 }

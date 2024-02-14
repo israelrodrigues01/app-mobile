@@ -30,11 +30,11 @@
     "default": {
       "type": "boolean"
     },
-    "task": {
+    "tasks": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::task.task",
-      "inversedBy": "id_status"
+      "mappedBy": "status"
     }
   }
 }

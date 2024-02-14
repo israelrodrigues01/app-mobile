@@ -719,6 +719,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    spaces: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::space.space'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -798,9 +803,9 @@ export interface ApiPriorityPriority extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     color: Attribute.String & Attribute.DefaultTo<'#ddd'>;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
-    task: Attribute.Relation<
+    tasks: Attribute.Relation<
       'api::priority.priority',
-      'oneToOne',
+      'oneToMany',
       'api::task.task'
     >;
     createdAt: Attribute.DateTime;
@@ -833,15 +838,19 @@ export interface ApiSpaceSpace extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    id_user: Attribute.Relation<
+    users_permissions_user: Attribute.Relation<
       'api::space.space',
-      'oneToOne',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     name: Attribute.String & Attribute.Required;
     path_image: Attribute.Media;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
-    task: Attribute.Relation<'api::space.space', 'oneToOne', 'api::task.task'>;
+    tasks: Attribute.Relation<
+      'api::space.space',
+      'oneToMany',
+      'api::task.task'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -877,9 +886,9 @@ export interface ApiStatusStatus extends Schema.CollectionType {
     type: Attribute.Integer;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
     default: Attribute.Boolean;
-    task: Attribute.Relation<
+    tasks: Attribute.Relation<
       'api::status.status',
-      'oneToOne',
+      'oneToMany',
       'api::task.task'
     >;
     createdAt: Attribute.DateTime;
@@ -914,6 +923,7 @@ export interface ApiTagTag extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     color: Attribute.String & Attribute.DefaultTo<'#ddd'>;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
+    tasks: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::task.task'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -939,20 +949,21 @@ export interface ApiTaskTask extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     description: Attribute.Text;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
-    id_space: Attribute.Relation<
+    space: Attribute.Relation<
       'api::task.task',
-      'oneToOne',
+      'manyToOne',
       'api::space.space'
     >;
-    id_priority: Attribute.Relation<
+    status: Attribute.Relation<
       'api::task.task',
-      'oneToOne',
-      'api::priority.priority'
-    >;
-    id_status: Attribute.Relation<
-      'api::task.task',
-      'oneToOne',
+      'manyToOne',
       'api::status.status'
+    >;
+    tags: Attribute.Relation<'api::task.task', 'manyToMany', 'api::tag.tag'>;
+    priority: Attribute.Relation<
+      'api::task.task',
+      'manyToOne',
+      'api::priority.priority'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -960,46 +971,6 @@ export interface ApiTaskTask extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTaskTagTaskTag extends Schema.CollectionType {
-  collectionName: 'task_tags';
-  info: {
-    singularName: 'task-tag';
-    pluralName: 'task-tags';
-    displayName: 'taskTag';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    id_task: Attribute.Relation<
-      'api::task-tag.task-tag',
-      'oneToOne',
-      'api::task.task'
-    >;
-    id_tag: Attribute.Relation<
-      'api::task-tag.task-tag',
-      'oneToOne',
-      'api::tag.tag'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::task-tag.task-tag',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::task-tag.task-tag',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1027,7 +998,6 @@ declare module '@strapi/types' {
       'api::status.status': ApiStatusStatus;
       'api::tag.tag': ApiTagTag;
       'api::task.task': ApiTaskTask;
-      'api::task-tag.task-tag': ApiTaskTagTaskTag;
     }
   }
 }

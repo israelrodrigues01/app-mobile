@@ -23,23 +23,29 @@
       "type": "integer",
       "default": 1
     },
-    "id_space": {
+    "space": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::space.space",
-      "inversedBy": "task"
+      "inversedBy": "tasks"
     },
-    "id_priority": {
+    "status": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::priority.priority",
-      "inversedBy": "task"
-    },
-    "id_status": {
-      "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::status.status",
-      "inversedBy": "task"
+      "inversedBy": "tasks"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "tasks"
+    },
+    "priority": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::priority.priority",
+      "inversedBy": "tasks"
     }
   }
 }
