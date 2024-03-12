@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         right: 5,
         bottom: -5,
         borderRadius: 100,
-        backgroundColor: colors.blue[200],
+        backgroundColor: colors.blue[100],
     },
     avatarEditText: {
         color: colors.white,
