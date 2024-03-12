@@ -690,7 +690,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -718,11 +717,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
-    >;
-    spaces: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::space.space'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -838,11 +832,6 @@ export interface ApiSpaceSpace extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    users_permissions_user: Attribute.Relation<
-      'api::space.space',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     name: Attribute.String & Attribute.Required;
     path_image: Attribute.Media;
     situation: Attribute.Integer & Attribute.DefaultTo<1>;
@@ -850,6 +839,11 @@ export interface ApiSpaceSpace extends Schema.CollectionType {
       'api::space.space',
       'oneToMany',
       'api::task.task'
+    >;
+    user: Attribute.Relation<
+      'api::space.space',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

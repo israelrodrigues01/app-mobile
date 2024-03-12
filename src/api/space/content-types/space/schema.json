@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "spaces"
-    },
     "name": {
       "type": "string",
       "required": true
@@ -39,6 +33,11 @@
       "relation": "oneToMany",
       "target": "api::task.task",
       "mappedBy": "space"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
