@@ -12,12 +12,14 @@ import StateButton from '../../../components/stateButton/index'
 
 import { styles } from './style';
 
-export default function Priority() {
-    const [priority, setPriority] = useState('');
+
+export default function Tag() {
+
+    const [tag, setTag] = useState('');
     const [color, setColor] = useState('');
 
     const handleChangeText = (text: string) => {
-        setPriority(text);
+        setTag(text);
         text.length < 1 ? clearColor() : null;
     };
 
@@ -27,7 +29,7 @@ export default function Priority() {
 
     return (
         <ScrollView className="flex-1" style={styles.container}>
-            <Title title="Minhas Prioridades" />
+            <Title title="Minhas Tags" />
             <View className="items-center">
                 <Avatar path='https://www.shareicon.net/data/512x512/2016/08/05/806962_user_512x512.png' icon='pen' name='Usuário' />
             </View>
@@ -41,26 +43,26 @@ export default function Priority() {
                 </View>
                 <View className="mb-5">
                     {
-                        priority ? <StateButton text={priority} color={color} /> : null
+                        tag ? <StateButton text={tag} color={color} /> : null
                     }
                 </View>
                 <View className="mb-5">
-                    <Button text="Adicionar Prioridade" />
+                    <Button text="Adicionar Tag" />
                 </View>
                 <View className="mt-10">
-                    <TitleInfo text="Prioridades" />
+                    <TitleInfo text="Tags" />
                     <View className="flex flex-row flex-wrap gap-5 mt-1">
                         <View>
-                            <StateButton text="Alta" color="#000" />
+                            <StateButton text="Escola" color="#57D41C" />
                         </View>
                         <View>
-                            <StateButton text="Alta" color="#000" />
+                            <StateButton text="Documentação" color="#1C45D4" />
                         </View>
                         <View>
-                            <StateButton text="Alta" color="#000" />
+                            <StateButton text="Projeto" color="#3979C5" />
                         </View>
                         <View>
-                            <StateButton text="Alta" color="#000" />
+                            <StateButton text="Desenvolvimento" color="#F9763E" />
                         </View>
                     </View>
                 </View>
