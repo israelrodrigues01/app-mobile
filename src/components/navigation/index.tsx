@@ -11,10 +11,11 @@ interface NavigationItem {
 }
 
 const data: NavigationItem[] = [
-  { id: 1, icon: "example1", routeName: "example1" },
-  { id: 2, icon: "example2", routeName: "example2" },
-  { id: 3, icon: "example3", routeName: "example3" },
-  { id: 4, icon: "example4", routeName: "example4" }
+  { id: 1, icon: "folder", routeName: "example1" },
+  { id: 2, icon: "calendar-check", routeName: "example2" },
+  { id: 3, icon: "plus", routeName: "example3"},
+  { id: 4, icon: "list-ul", routeName: "example4" },
+  { id: 5, icon: "user", routeName: "example5" }
 ];
 
 // interface IconProps {
@@ -23,18 +24,28 @@ const data: NavigationItem[] = [
 // }
 
 export default function Navigation() {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   const renderItem = ({ item }: { item: NavigationItem }) => {
     // const handlePress = () => {
     //   navigation.navigate(item.routeName);
     // };
 
-    return (
-      <TouchableOpacity>
-        <FontAwesome5 name={item.icon} size={26} />
-      </TouchableOpacity>
-    );
+    if (item.id === 3) {
+      return (
+        <View>
+          <TouchableOpacity>
+            <FontAwesome5 name="plus" size={32} color="white" />
+          </TouchableOpacity>
+        </View>
+      );
+    } else {
+      return (
+        <TouchableOpacity>
+          <FontAwesome5 name={item.icon} size={24} color="white" />
+        </TouchableOpacity>
+      );
+    }
   };
 
   return (
@@ -44,6 +55,7 @@ export default function Navigation() {
         horizontal
         renderItem={renderItem}
         contentContainerStyle={styles.list}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
