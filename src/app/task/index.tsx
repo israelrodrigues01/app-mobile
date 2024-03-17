@@ -1,8 +1,9 @@
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 
 import Title from '../../components/title/index';
 import Input from '../../components/input/index';
 import Button from '../../components/button/index';
+import Dropdown from "../../components/dropdown";
 
 import { styles } from './style';
 
@@ -13,13 +14,14 @@ export default function Task() {
 
       <View className="flex flex-col gap-y-5">
         <View>
-          <Input placeholder="Novo nome" />
+          <Input placeholder="Nome" />
         </View>
         <View>
           <Input placeholder="Status" />
         </View>
         <View>
-          <Input placeholder="Prioridade" />
+          {/* <Input placeholder="Prioridade" /> */}
+          <Dropdown placeholder="Prioridade"/>
         </View>
         <View>
           <Input placeholder="Descrição" />
@@ -30,5 +32,5 @@ export default function Task() {
         <Button text="Adicionar Tarefa" />
       </View>
     </View >
-);
+  );
 }
