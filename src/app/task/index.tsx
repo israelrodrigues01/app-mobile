@@ -17,11 +17,10 @@ export default function Task() {
           <Input placeholder="Nome" />
         </View>
         <View>
-          <Input placeholder="Status" />
+        <Dropdown placeholder="Status" />
         </View>
         <View>
-          {/* <Input placeholder="Prioridade" /> */}
-          <Dropdown placeholder="Prioridade"/>
+          <Dropdown placeholder="Prioridade" />
         </View>
         <View>
           <Input placeholder="Descrição" />
