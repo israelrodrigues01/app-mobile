@@ -1,11 +1,11 @@
 import { View } from "react-native";
 
-import Title from '../../components/title/index';
-import Input from '../../components/input/index';
-import Button from '../../components/button/index';
-import Dropdown from "../../components/dropdown";
+import Title from '../../../components/title/index';
+import Input from '../../../components/input/index';
+import Button from '../../../components/button/index';
+import Dropdown from "../../../components/dropdown";
 
-import { styles } from './style';
+import { styles } from '../style';
 
 export default function Task() {
   return (
@@ -28,7 +28,7 @@ export default function Task() {
       </View>
 
       <View className="mt-10">
-        <Button text="Adicionar Tarefa" />
+        <Button text="Editar Tarefa" />
       </View>
     </View >
   );

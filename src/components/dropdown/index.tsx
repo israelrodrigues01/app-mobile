@@ -12,9 +12,9 @@ export default function Dropdown(props: Dropdown) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
-    {label: 'Pear', value: 'pear'},
+    {label: 'Example1', value: 'example1'},
+    {label: 'Example2', value: 'example2'},
+    {label: 'Example3', value: 'example3'},
   ]);
 
   return (
