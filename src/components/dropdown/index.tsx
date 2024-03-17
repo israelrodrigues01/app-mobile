@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { styles } from './style';
-import { colors } from '../../styles/colors';
+import { styles } from './style'; 
+import { SafeAny } from "../../utils/safe-any";
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -27,7 +27,9 @@ export default function Dropdown(props: Dropdown) {
       setValue={setValue}
       setItems={setItems}
       placeholder={props.placeholder}
-      placeholderStyle={{ color: colors.gray[200] }}
+
+      placeholderStyle={{ color: '#7F7B8E' }}
+      arrowIconStyle={{ tintColor: '#7F7B8E'} as SafeAny }
     />
   )
 }
