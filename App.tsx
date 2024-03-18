@@ -6,7 +6,7 @@ import Profile from './src/app/profile/index';
 import Tarefa from './src/app/task/get/index';
 
 export default function App() {
-  return (
+  return (  
     <View className='flex-1'>
       <Tarefa />
     </View>
