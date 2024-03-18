@@ -27,7 +27,6 @@ export default function Dropdown(props: Dropdown) {
       setValue={setValue}
       setItems={setItems}
       placeholder={props.placeholder}
-
       placeholderStyle={{ color: '#7F7B8E' }}
       arrowIconStyle={{ tintColor: '#7F7B8E'} as SafeAny }
     />

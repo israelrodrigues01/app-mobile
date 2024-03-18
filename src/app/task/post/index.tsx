@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 
 import Title from '../../../components/title/index';
 import Input from '../../../components/input/index';
@@ -16,11 +16,14 @@ export default function Task() {
         <View>
           <Input placeholder="Nome" />
         </View>
-        <View>
-        <Dropdown placeholder="Status" />
+        <View style={{ zIndex: 3 }}>
+          <Dropdown placeholder="Status" />
         </View>
-        <View>
+        <View style={{ zIndex: 2 }}>
           <Dropdown placeholder="Prioridade" />
+        </View>
+        <View style={{ zIndex: 1 }}>
+          <Dropdown placeholder="Tags" />
         </View>
         <View>
           <Input placeholder="Descrição" />
