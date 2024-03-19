@@ -8,7 +8,7 @@ import Tarefa from './src/app/task/get/index';
 export default function App() {
   return (  
     <View className='flex-1'>
-      <Tarefa />
+      <Profile />
     </View>
   );
 }
