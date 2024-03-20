@@ -3,7 +3,6 @@ import { View, FlatList, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { styles } from "./style";
-
 interface NavigationItem {
   id: number;
   icon: string;
@@ -11,11 +10,10 @@ interface NavigationItem {
 }
 
 const data: NavigationItem[] = [
-  { id: 1, icon: "folder", routeName: "example1" },
+  { id: 1, icon: "folder", routeName: "Space" },
   { id: 2, icon: "calendar-check", routeName: "example2" },
-  { id: 3, icon: "plus", routeName: "example3"},
-  { id: 4, icon: "list-ul", routeName: "example4" },
-  { id: 5, icon: "user", routeName: "example5" }
+  { id: 4, icon: "list-ul", routeName: "Priority" },
+  { id: 5, icon: "user", routeName: "Profile" }
 ];
 
 // interface IconProps {
@@ -24,28 +22,18 @@ const data: NavigationItem[] = [
 // }
 
 export default function Navigation() {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const renderItem = ({ item }: { item: NavigationItem }) => {
-    // const handlePress = () => {
-    //   navigation.navigate(item.routeName);
-    // };
+    const handlePress = () => {
+      navigation.navigate(item.routeName as never);
+    };
 
-    if (item.id === 3) {
-      return (
-        <View>
-          <TouchableOpacity>
-            <FontAwesome5 name="plus" size={32} color="white" />
-          </TouchableOpacity>
-        </View>
-      );
-    } else {
-      return (
-        <TouchableOpacity>
-          <FontAwesome5 name={item.icon} size={24} color="white" />
-        </TouchableOpacity>
-      );
-    }
+    return (
+      <TouchableOpacity onPress={handlePress}>
+        <FontAwesome5 name={item.icon} size={24} color="white" />
+      </TouchableOpacity>
+    );
   };
 
   return (

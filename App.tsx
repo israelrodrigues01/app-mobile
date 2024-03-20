@@ -1,18 +1,22 @@
 import { StyleSheet, Text, View } from 'react-native';
-
-import Login from './src/app/login/index';
-import Register from './src/app/register/index';
 import Profile from './src/app/profile/index';
+import { createStackNavigator } from "@react-navigation/stack"
 import Navigation from './src/components/navigation';
 import Priority from './src/app/priority/index/index';
-import State from './src/app/state/index/index';
-import Tarefa from './src/app/task/get/index';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
     <View className='flex-1 relative'>
-      <Profile />
-      <Navigation />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Profile' component={Profile} />
+          <Stack.Screen name='Priority' component={Priority} />
+        </Stack.Navigator>
+        <Navigation />
+      </NavigationContainer>
     </View>
   );
 }
